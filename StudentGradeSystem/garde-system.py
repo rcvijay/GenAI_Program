@@ -16,7 +16,7 @@ def calculate_grade(score):
     else:
         print('you have secure F grade')    
         return 'F'
-
+print('Welcome to student grade system')
 mark = int(input('Enter your mark(1-100): '))
 calculate_grade(mark)
 
