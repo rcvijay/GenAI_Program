@@ -1,5 +1,3 @@
-#student grade system
-
 def calculate_grade(score):
     if score >= 90:
         print('very good you have secure A grade')
@@ -17,7 +15,18 @@ def calculate_grade(score):
         print('you have secure F grade')    
         return 'F'
 print('Welcome to student grade system')
-mark = int(input('Enter your mark(1-100): '))
+def get_valid_mark():
+    while True:
+        try:
+            mark = int(input('Enter your mark (0-100): '))
+        except ValueError:
+            print('Please enter a whole number.')
+            continue
+        if 0 <= mark <= 100:
+            return mark
+        print('Enter valid mark (0-100). Please try again.')
+
+
+print('Welcome to student grade system')
+mark = get_valid_mark()
 calculate_grade(mark)
-
-
