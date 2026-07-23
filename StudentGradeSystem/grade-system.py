@@ -14,7 +14,6 @@ def calculate_grade(score):
     else:
         print('you have secure F grade')    
         return 'F'
-print('Welcome to student grade system')
 def get_valid_mark():
     while True:
         try:
@@ -25,8 +24,27 @@ def get_valid_mark():
         if 0 <= mark <= 100:
             return mark
         print('Enter valid mark (0-100). Please try again.')
+grade_cache = {}
+
+def get_grade_with_cache(mark):
+    try:
+        if mark in grade_cache:
+            print(f'Retrieved from cache: grade {grade_cache[mark]} for mark {mark}')
+            return grade_cache[mark]
+        grade = calculate_grade(mark)
+        grade_cache[mark] = grade
+        return grade
+    except Exception as e:
+        print('Error while computing grade:', e)
+        raise
 
 
-print('Welcome to student grade system')
-mark = get_valid_mark()
-calculate_grade(mark)
+if __name__ == '__main__':
+    try:
+        print('Welcome to student grade system')
+        mark = get_valid_mark()
+        get_grade_with_cache(mark)
+    except KeyboardInterrupt:
+        print('\nOperation cancelled by user.')
+    except Exception as e:
+        print('An unexpected error occurred:', e)
