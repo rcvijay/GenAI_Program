@@ -1,2 +1,7 @@
 /venv
 /.venv
+.agent
+.venv-1
+.vscode
+venv/
+venv1/
